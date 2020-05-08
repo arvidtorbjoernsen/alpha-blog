@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "app/**/*.{js,es6,jsx,scss,css}": [
+      "./node_modules/prettier/bin/prettier.js --single-quote --trailing-comma es5 --write",
+      "git add"
+    ],
+    "{app,test}/**/*.rb": [
+      "bundle exec rubocop -a",
+      "git add"
+    ]
+  },
+  "name": "alpha_blog",
+  "private": true,
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.2.2",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5"
+  }
+}
