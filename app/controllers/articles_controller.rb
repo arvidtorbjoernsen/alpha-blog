@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  def show
-    @article = Article.find(params[:id])
-  end
+  before_action :set_article, only: %i[show edit update destroy]
+
+  def show; end
 
   def index
     @articles = Article.all
@@ -13,9 +13,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
+  def edit; end
 
   def create
     @article = Article.new(article_params)
@@ -29,7 +27,6 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update(article_params)
       flash[:success] = 'article was successfully updated'
       redirect_to @article
@@ -39,16 +36,20 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     if @article.destroy
-      flash[:success] = 'Object was successfully deleted.'
+      flash[:success] = 'Article was successfully deleted.'
     else
       flash[:error] = 'Something went wrong'
     end
     redirect_to articles_path
   end
 
-  def article_params
-    params.require(:article).permit(:title, :description)
-  end
+  private
+    def set_article
+      @article = Article.find(params[:id])
+    end
+
+    def article_params
+      params.require(:article).permit(:title, :description)
+    end
 end
