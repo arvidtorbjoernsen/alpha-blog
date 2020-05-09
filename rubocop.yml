@@ -1,6 +1,7 @@
 require:
   - rubocop-performance
   - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 2.6.6
@@ -16,10 +17,28 @@ AllCops:
     - 'actionmailbox/test/dummy/**/*'
     - 'actiontext/test/dummy/**/*'
     - '**/node_modules/**/*'
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
 
 Performance:
   Exclude:
     - '**/test/**/*'
+
+Layout/LineLength:
+  Max: 100
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+Style/Documentation:
+  Enabled: false
 
 # Prefer assert_not over assert !
 Rails/AssertNot:
@@ -63,10 +82,7 @@ Layout/EndAlignment:
   AutoCorrect: true
 
 Layout/EndOfLine:
-  EnforcedStyle: crlf lf
-
-Style/EndOfLine:
-  EnforcedStyle: crlf lf
+  EnforcedStyle: lf
 
 Layout/EmptyLineAfterMagicComment:
   Enabled: true
@@ -176,7 +192,7 @@ Layout/SpaceInsideParens:
 # Check quotes usage according to lint rule below.
 Style/StringLiterals:
   Enabled: true
-  EnforcedStyle: double_quotes
+  EnforcedStyle: single_quotes
 
 # Detect hard tabs, no hard tabs.
 Layout/IndentationStyle:
