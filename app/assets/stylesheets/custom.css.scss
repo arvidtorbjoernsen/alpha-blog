@@ -1,5 +1,11 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+html,
+body {
+  height: 100%;
+  padding-top: 3rem;
+}
+
 .navbar {
   background-color: black !important;
   padding: 1.5rem;
@@ -49,11 +55,6 @@
 
   display: flex;
   align-items: center;
-}
-
-html,
-body {
-  height: 100%;
 }
 
 #page-content {
