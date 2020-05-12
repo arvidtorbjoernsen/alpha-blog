@@ -82,7 +82,7 @@ Layout/EndAlignment:
   AutoCorrect: true
 
 Layout/EndOfLine:
-  EnforcedStyle: lf
+  EnforcedStyle: native
 
 Layout/EmptyLineAfterMagicComment:
   Enabled: true
